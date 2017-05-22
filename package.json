@@ -1,0 +1,15 @@
+{
+  "name": "rtlmost-fetch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/balazs4/rtlmost-fetch.git",
+  "author": "balazs4 <balazs4web@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.6.8",
+    "moment": "^2.18.1",
+    "phantom": "^4.0.3",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  }
+}
