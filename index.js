@@ -4,9 +4,7 @@ const request = require('request-promise-native');
 const crawl = require('./crawl');
 const sources = require('./links');
 
-const [_, __, id, day = moment().format('YYYY-MM-DD')] = process.argv;
-
-(async (id, day) => {
+const main = async (id, day) => {
   log(`Looking for ${id}, ${day}`);
   const endpoint = `${process.env.DB}/${id}-${day}`;
   const { statusCode } = await request(endpoint, {
@@ -36,4 +34,10 @@ const [_, __, id, day = moment().format('YYYY-MM-DD')] = process.argv;
   });
   log(JSON.stringify(post));
   log(`Inserted ${endpoint}`);
-})(id, day);
+};
+
+const [_, __, id, day = moment().format('YYYY-MM-DD')] = process.argv;
+main(id, day).then(() => process.exit(0)).catch(err => {
+  console.log(err);
+  process.exit(-1);
+});
