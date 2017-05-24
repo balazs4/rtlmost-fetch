@@ -34,6 +34,14 @@ const getLink = async src => {
   log('Creating page object');
   const page = await instance.createPage();
 
+  page.on('onResourceRequested', true, function(data, network) {
+    if (/rtl\.hu/.test(data.url) === false) {
+      network.abort();
+    }
+  });
+
+  page.on('onResourceReceived', response => {});
+
   log(`Opening ${src}`);
   await page.open(src);
 
