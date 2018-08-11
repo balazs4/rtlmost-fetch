@@ -16,7 +16,7 @@ const main = async (id, day) => {
     log('Already exists');
     return;
   }
-
+  log(sources);
   const src = sources[id](day);
   const item = await crawl(src);
   const result = Object.assign({}, item, { src, tags: [id] });
